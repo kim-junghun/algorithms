@@ -18,14 +18,14 @@ def Dijkstra_using_priority_queue(graph, source, target):
         heapq.heappush(Q, [dist[vertex], vertex])
         
     while Q:
-        min = heapq.heappop(Q)[1] # 가장 높은 우선순위의 꼭지점을 제거하고 반환
+        u = heapq.heappop(Q)[1] # 가장 높은 우선순위의 꼭지점을 제거하고 반환
 
         # 인접 꼭지점의 최단 경로 
-        for v in graph[min]:
-            alt = dist[min] + graph[min][v]
+        for v in graph[u]:
+            alt = dist[u] + graph[u][v]
             if alt < dist[v]:
                 dist[v] = alt
-                prev[v] = min
+                prev[v] = u
             
             # decrease proirity
             for t in Q:
